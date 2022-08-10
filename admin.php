@@ -197,19 +197,19 @@
                             <form id="batchForm" onsubmit="return false;">
                             <fieldset style="border:0;">
                                 <div class="form-group">
-                                    <label class="control-label" for="farmerRegistrationNo">Manufacturer Registration No <i class="red">*</i></label>
+                                    <label class="control-label" for="farmerRegistrationNo">Supplyer Registration No <i class="red">*</i></label>
                                     <input type="text" class="form-control" id="farmerRegistrationNo" name="farmerRegistrationNo" placeholder="Manufacturer Registration No" data-parsley-required="true">
                                 </div> 
                                 <div class="form-group">
-                                    <label class="control-label" for="farmerName">Manufacturer Name <i class="red">*</i></label>
+                                    <label class="control-label" for="farmerName">Supplyer Name <i class="red">*</i></label>
                                     <input type="text" class="form-control" id="farmerName" name="farmerName" placeholder="Manufacturer Name" data-parsley-required="true">
                                 </div>                              
                                 <div class="form-group">
-                                    <label class="control-label" for="farmerAddress">Manufacturer Address <i class="red">*</i></label>
+                                    <label class="control-label" for="farmerAddress">Supplyer Address <i class="red">*</i></label>
                                     <textarea class="form-control" id="farmerAddress" name="farmerAddress" placeholder="Manufacturer Address" data-parsley-required="true"></textarea>
                                 </div>
                                 <div class="form-group">
-                                    <label class="control-label" for="exporterName">Exporter Name <i class="red">*</i></label>
+                                    <label class="control-label" for="exporterName">Supplyer Name <i class="red">*</i></label>
                                     <input type="text" class="form-control" id="exporterName" name="exporterName" placeholder="Exporter Name" data-parsley-required="true">
                                 </div> 
                                 <div class="form-group">

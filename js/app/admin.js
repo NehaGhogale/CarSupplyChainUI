@@ -79,8 +79,7 @@ function addCultivationBatch() {
         addBasicDetails
           .send({
             from: globCoinbase,
-            gas: gasAmount + 100,
-            //     to: globMainContract._address
+            gas: gasAmount
           })
           .on("transactionHash", function (hash) {
             handleTransactionResponse(hash);

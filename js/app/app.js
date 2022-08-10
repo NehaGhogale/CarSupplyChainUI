@@ -7,7 +7,7 @@ var globIcoAddress = {
 };
 
 var globAdminAddress =
-  "0xcdD7C591353bCe68e8A83DD32beCd1bB5EC825d5".toLocaleLowerCase();
+  "0xcdD7C591353bCe68e8A83DD32beCd1bB5EC825d5";
 var globMainContract = false;
 var globUserContract = false;
 var globCoinbase = false;
@@ -32,7 +32,7 @@ window.addEventListener("load", function () {
     var currentPath = window.location.pathname;
     var tmpStack = currentPath.split("/");
     var currentPanel = tmpStack.pop();
-
+    console.log(currentPanel, address, globAdminAddress, "-------------------------------");
     if (currentPanel == "admin.php") {
       if (address != globAdminAddress) {
         window.location = "index.php";

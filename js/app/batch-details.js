@@ -178,11 +178,11 @@ function buildCultivationBlock(result)
                                 <td>`+registrationNo+` <i class="fa fa-check-circle verified_info"></i></td>
                             </tr>
                             <tr>
-                                <td><b>Farmer Name:</b></td>
+                                <td><b>Supplyer Name:</b></td>
                                 <td>`+farmerName+` <i class="fa fa-check-circle verified_info"></i></td>
                             </tr>
                             <tr>
-                                <td><b>Farm Address:</b></td>
+                                <td><b>Supplyer Address:</b></td>
                                 <td>`+farmAddress+` <i class="fa fa-check-circle verified_info"></i></td>
                             </tr>
                             <tr>
@@ -218,11 +218,11 @@ function buildQualityInspectorBlock(result){
                                     <td>`+productFamily+` <i class="fa fa-check-circle verified_info"></i></td>
                                   </tr>
                                   <tr>
-                                    <td><b>Type of Seeds:</b></td>
+                                    <td><b>Product Name:</b></td>
                                     <td>`+typeOfSeed+` <i class="fa fa-check-circle verified_info"></i></td>
                                   </tr>
                                   <tr>
-                                    <td><b>Fertilizer Used:</b></td>
+                                    <td><b>Specialization:</b></td>
                                     <td>`+fertilizerUsed+` <i class="fa fa-check-circle verified_info"></i></td>
                                   </tr>`;
         farmInspactorData.isDataAvail = true;                          
@@ -244,16 +244,16 @@ function buildManufacturerBlock(result){
 
 	if(cropVariety!='' && temperatureUsed!='' && humidity!=''){
 		manufacturerData.html =  `<tr>
-                                <td><b>Crop Variety:</b></td>
+                                <td><b>Car Code:</b></td>
                                 <td>`+cropVariety+` <i class="fa fa-check-circle verified_info"></i></td>
                               </tr>
                               <tr>
-                                <td><b>Temperature Used:</b></td>
-                                <td>`+temperatureUsed+`&#x2109; <i class="fa fa-check-circle verified_info"></i></td>
+                                <td><b>Car Name:</b></td>
+                                <td>`+temperatureUsed+` <i class="fa fa-check-circle verified_info"></i></td>
                               </tr>
                               <tr>
-                                <td><b>Humidity:</b></td>
-                                <td>`+humidity+`% <i class="fa fa-check-circle verified_info"></i></td>
+                                <td><b>Specifications:</b></td>
+                                <td>`+humidity+` <i class="fa fa-check-circle verified_info"></i></td>
                               </tr>`;
         manufacturerData.isDataAvail = true;                      
     }else{
@@ -282,7 +282,7 @@ function buildExporterBlock(result){
     var estimateDateTime = new Date(result.estimateDateTime * 1000).toLocaleString();
     exporterData.html =  `<tr>
                             <td><b>Quantity:</b></td>
-                            <td>`+quantity+` (in Kg) <i class="fa fa-check-circle verified_info"></i></td>
+                            <td>`+quantity+` <i class="fa fa-check-circle verified_info"></i></td>
                           </tr>
                           <tr>
                             <td><b>Destination Address:</b></td>
@@ -335,7 +335,7 @@ function buildImporterBlock(result){
     var arrivalDateTime = new Date(result.arrivalDateTime * 1000).toLocaleString();
     importerData.html =  `<tr>
                             <td><b>Quantity:</b></td>
-                            <td>`+quantity+` (in Kg) <i class="fa fa-check-circle verified_info"></i></td>
+                            <td>`+quantity+` <i class="fa fa-check-circle verified_info"></i></td>
                           </tr>
                           <tr>
                             <td><b>Ship Name:</b></td>
@@ -392,15 +392,7 @@ function buildDeliveryHubBlock(result){
 
     deliveryHubData.html =  `<tr>
                             <td><b>Quantity:</b></td>
-                            <td>`+result.quantity+` (in Kg) <i class="fa fa-check-circle verified_info"></i></td>
-                          </tr>
-                          <tr>
-                            <td><b>Temperature:</b></td>
-                            <td>`+result.temperature+`&#x2109; <i class="fa fa-check-circle verified_info"></i></td>
-                          </tr>
-                          <tr>
-                            <td><b>Rosting Duration:</b></td>
-                            <td>`+result.rostingDuration+` in seconds <i class="fa fa-check-circle verified_info"></i></td>
+                            <td>`+result.quantity+` <i class="fa fa-check-circle verified_info"></i></td>
                           </tr>
                           <tr>
                             <td><b>Processed Batch No:</b></td>

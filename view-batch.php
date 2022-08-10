@@ -32,7 +32,7 @@
                             </div>
                             <div class="timeline-panel" id="cultivationSection">
                                 <div class="timeline-heading">
-                                    <h4 class="timeline-title">Cultivation</h4>
+                                    <h4 class="timeline-title">Supplyer Batch</h4>
                                     <p><small class="text-muted text-success activityDateTime"></small> </p>
                                     <span class="activityQrCode"></span>
                                 </div>
@@ -51,7 +51,7 @@
                             </div>
                             <div class="timeline-panel" id="qualityInspectorSection">
                                 <div class="timeline-heading">
-                                    <h4 class="timeline-title">Farm-Inspector</h4>
+                                    <h4 class="timeline-title">Quality-Inspector</h4>
                                     <p><small class="text-muted text-success activityDateTime"></small> </p>
                                     <span class="activityQrCode"></span>
                                 </div>

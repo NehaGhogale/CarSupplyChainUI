@@ -143,16 +143,16 @@
                                         <input type="text" class="form-control" id="InspectorId" name="inspectorId" placeholder="inspector id number" data-parsley-required="true">
                                     </div>   -->                            
                                     <div class="form-group">
-                                        <label class="control-label" for="typeOfSeed">Product</label>
-                                        <input type="text" class="form-control" id="typeOfSeed" name="typeOfSeed" placeholder="product" data-parsley-required="true">
+                                        <label class="control-label" for="typeOfSeed">Product Name</label>
+                                        <input type="text" class="form-control" id="typeOfSeed" name="typeOfSeed" placeholder="Product Name" data-parsley-required="true">
                                     </div>
                                     <div class="form-group">
                                         <label class="control-label" for="productFamily">Product Family</label>
-                                        <input type="text" class="form-control" id="productFamily" name="productFamily" placeholder="product family" data-parsley-required="true">
+                                        <input type="text" class="form-control" id="productFamily" name="productFamily" placeholder="Product Family" data-parsley-required="true">
                                     </div>
                                     <div class="form-group">
                                         <label class="control-label" for="fertilizer">Specifications</label>
-                                        <input type="text" class="form-control" id="fertilizerUsed" name="fertilizer" placeholder="specifications" data-parsley-required="true">
+                                        <input type="text" class="form-control" id="fertilizerUsed" name="fertilizer" placeholder="Specifications" data-parsley-required="true">
                                     </div>
                                      <div class="form-group float-right">
                                         <button type="reset" class="btn btn-default waves-effect" >Reset</button>
@@ -167,16 +167,16 @@
                                 <fieldset style="border:0;">
                                                             
                                     <div class="form-group">
-                                        <label class="control-label" for="cropVariety">Product Variety</label>
-                                        <input type="text" class="form-control" id="cropVariety" name="cropVariety" placeholder="product variety" data-parsley-required="true">
+                                        <label class="control-label" for="cropVariety">Car Code</label>
+                                        <input type="text" class="form-control" id="cropVariety" name="cropVariety" placeholder="Car Code" data-parsley-required="true">
                                     </div>
                                     <div class="form-group">
-                                        <label class="control-label" for="temperatureUsed">Temperature (in Fahrenheit)</label>
-                                        <input type="text" class="form-control" id="temperatureUsed" name="temperatureUsed" placeholder="temperature" data-parsley-required="true">
+                                        <label class="control-label" for="temperatureUsed">Car Name</label>
+                                        <input type="text" class="form-control" id="temperatureUsed" name="temperatureUsed" placeholder="Car Name" data-parsley-required="true">
                                     </div>
                                      <div class="form-group">
-                                        <label class="control-label" for="humidity">Humidity</label>
-                                        <input type="text" class="form-control" id="humidity" name="humidity" placeholder="humidity" data-parsley-required="true">
+                                        <label class="control-label" for="humidity">Specifications</label>
+                                        <input type="text" class="form-control" id="humidity" name="humidity" placeholder="Car Specifications" data-parsley-required="true">
                                     </div>                                
                                     <div class="form-group float-right">
                                         <button type="reset" class="btn btn-default waves-effect">Reset</button>
@@ -191,7 +191,7 @@
                                 <fieldset style="border:0;">
 
                                     <div class="form-group">
-                                        <label class="control-label" for="quantity">Quantity (in Kg)</label>
+                                        <label class="control-label" for="quantity">Quantity</label>
                                         <input type="number" min="1" class="form-control" id="quantity" name="quantity" placeholder="Quantity" data-parsley-required="true">
                                     </div> 
 
@@ -280,18 +280,17 @@
                                 <h1>Processing</h1><br>
                                 <fieldset style="border:0;">
                                     <div class="form-group">
-                                        <label class="control-label" for="quantity">Quantity (in Kg)</label>
+                                        <label class="control-label" for="quantity">Quantity</label>
                                         <input type="number" min="1" class="form-control" id="quantity" name="quantity" placeholder="Quantity" data-parsley-required="true">
                                     </div> 
-                                    <div class="form-group">
+                                    <!-- <div class="form-group">
                                         <label class="control-label" for="processingTemperature">Temperature (in Fahrenheit)</label>
                                         <input type="text" class="form-control" id="processingTemperature" name="temperature" placeholder="Temperature" data-parsley-required="true">
                                     </div>                              
                                     <div class="form-group">
                                         <label class="control-label" for="rostingDuration">Time for Roasting (in Seconds)</label>
                                         <input type="number" min="1" class="form-control" id="rostingDuration" name="rostingDuration" placeholder="Time for roasting" data-parsley-required="true" >
-                                    </div>
-                               
+                                    </div> -->
                                     <div class="form-group">
                                         <label class="control-label" for="internalBatchNo">Internal Batch no</label>
                                         <input type="text" class="form-control" id="internalBatchNo" name="internalBatchNo" placeholder="Internal Batch no" data-parsley-required="true">

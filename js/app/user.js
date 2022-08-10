@@ -130,26 +130,34 @@ function getUser(contractRef, callback) {
 }
 
 function updateUser(contractRef, data) {
-  contractRef.methods
-    .updateUser(
-      data.fullname,
-      data.contact,
-      data.role,
-      data.status,
-      data.profile
-    )
-    .send({ from: globCoinbase, to: contractRef.address })
-    .on("transactionHash", function (hash) {
-      $.magnificPopup.instance.close();
-      handleTransactionResponse(hash);
-      $("#userFormModel").modal("hide");
+  var updateUser = contractRef.methods.updateUser(
+    data.fullname,
+    data.contact,
+    data.role,
+    data.status,
+    data.profile
+  );
+  updateUser
+    .estimateGas({ from: globCoinbase })
+    .then(function (gasAmount) {
+      updateUser
+        .send({ from: globCoinbase, gas: gasAmount })
+        .on("transactionHash", function (hash) {
+          $.magnificPopup.instance.close();
+          handleTransactionResponse(hash);
+          $("#userFormModel").modal("hide");
+        })
+        .on("receipt", function (receipt) {
+          receiptMessage = "User Profile Updated Succussfully";
+          handleTransactionReceipt(receipt, receiptMessage);
+          $("#userFormModel").modal("hide");
+        })
+        .on("error", function (error) {
+          handleGenericError(error.message);
+          return;
+        });
     })
-    .on("receipt", function (receipt) {
-      receiptMessage = "User Profile Updated Succussfully";
-      handleTransactionReceipt(receipt, receiptMessage);
-      $("#userFormModel").modal("hide");
-    })
-    .on("error", function (error) {
+    .catch(function (error) {
       handleGenericError(error.message);
       return;
     });
@@ -227,23 +235,31 @@ $("#updateHarvest").on("click", function () {
 
 function updateHarvest(contractRef, data) {
   //contractRef.methods.updateUser("Swapnali","9578774787","MANUFACTURER",true,"0x74657374")
-  contractRef.methods
-    .updateManufacturerData(
-      data.batchNo,
-      data.cropVariety,
-      data.temperatureUsed,
-      data.humidity
-    )
-    .send({ from: globCoinbase, to: contractRef.address })
-    .on("transactionHash", function (hash) {
-      $.magnificPopup.instance.close();
-      handleTransactionResponse(hash);
+  var updateManufacturerData = contractRef.methods.updateManufacturerData(
+    data.batchNo,
+    data.cropVariety,
+    data.temperatureUsed,
+    data.humidity
+  );
+  updateManufacturerData
+    .estimateGas({ from: globCoinbase })
+    .then(function (gasAmount) {
+      updateManufacturerData
+        .send({ from: globCoinbase, gas: gasAmount })
+        .on("transactionHash", function (hash) {
+          $.magnificPopup.instance.close();
+          handleTransactionResponse(hash);
+        })
+        .on("receipt", function (receipt) {
+          receiptMessage = "Harvest Updated Succussfully";
+          handleTransactionReceipt(receipt, receiptMessage);
+        })
+        .on("error", function (error) {
+          handleGenericError(error.message);
+          return;
+        });
     })
-    .on("receipt", function (receipt) {
-      receiptMessage = "Harvest Updated Succussfully";
-      handleTransactionReceipt(receipt, receiptMessage);
-    })
-    .on("error", function (error) {
+    .catch(function (error) {
       handleGenericError(error.message);
       return;
     });
@@ -273,26 +289,34 @@ $("#updateExport").on("click", function () {
 
 function updateExport(contractRef, data) {
   //contractRef.methods.updateUser("Swapnali","9578774787","MANUFACTURER",true,"0x74657374")
-  contractRef.methods
-    .updateExporterData(
-      data.batchNo,
-      data.quantity,
-      data.destinationAddress,
-      data.shipName,
-      data.shipNo,
-      data.estimateDateTime,
-      data.exporterId
-    )
-    .send({ from: globCoinbase, to: contractRef.address })
-    .on("transactionHash", function (hash) {
-      $.magnificPopup.instance.close();
-      handleTransactionResponse(hash);
+  var updateExporterData = contractRef.methods.updateExporterData(
+    data.batchNo,
+    data.quantity,
+    data.destinationAddress,
+    data.shipName,
+    data.shipNo,
+    data.estimateDateTime,
+    data.exporterId
+  );
+  updateExporterData
+    .estimateGas({ from: globCoinbase })
+    .then(function (gasAmount) {
+      updateExporterData
+        .send({ from: globCoinbase, gas: gasAmount })
+        .on("transactionHash", function (hash) {
+          $.magnificPopup.instance.close();
+          handleTransactionResponse(hash);
+        })
+        .on("receipt", function (receipt) {
+          receiptMessage = "Export Updated Succussfully";
+          handleTransactionReceipt(receipt, receiptMessage);
+        })
+        .on("error", function (error) {
+          handleGenericError(error.message);
+          return;
+        });
     })
-    .on("receipt", function (receipt) {
-      receiptMessage = "Export Updated Succussfully";
-      handleTransactionReceipt(receipt, receiptMessage);
-    })
-    .on("error", function (error) {
+    .catch(function (error) {
       handleGenericError(error.message);
       return;
     });
@@ -319,27 +343,36 @@ $("#updateImport").on("click", function () {
 
 function updateImport(contractRef, data) {
   //contractRef.methods.updateUser("Swapnali","9578774787","MANUFACTURER",true,"0x74657374")
-  contractRef.methods
-    .updateImporterData(
-      data.batchNo,
-      data.quantity,
-      data.shipName,
-      data.shipNo,
-      data.transportInfo,
-      data.warehouseName,
-      data.warehouseAddress,
-      data.importerId
-    )
-    .send({ from: globCoinbase, to: contractRef.address })
-    .on("transactionHash", function (hash) {
-      $.magnificPopup.instance.close();
-      handleTransactionResponse(hash);
+  var updateImporterData = contractRef.methods.updateImporterData(
+    data.batchNo,
+    data.quantity,
+    data.shipName,
+    data.shipNo,
+    data.transportInfo,
+    data.warehouseName,
+    data.warehouseAddress,
+    data.importerId
+  );
+
+  updateImporterData
+    .estimateGas({ from: globCoinbase })
+    .then(function (gasAmount) {
+      updateImporterData
+        .send({ from: globCoinbase, gas: gasAmount })
+        .on("transactionHash", function (hash) {
+          $.magnificPopup.instance.close();
+          handleTransactionResponse(hash);
+        })
+        .on("receipt", function (receipt) {
+          receiptMessage = "Import Updated Succussfully";
+          handleTransactionReceipt(receipt, receiptMessage);
+        })
+        .on("error", function (error) {
+          handleGenericError(error.message);
+          return;
+        });
     })
-    .on("receipt", function (receipt) {
-      receiptMessage = "Import Updated Succussfully";
-      handleTransactionReceipt(receipt, receiptMessage);
-    })
-    .on("error", function (error) {
+    .catch(function (error) {
       handleGenericError(error.message);
       return;
     });
@@ -355,8 +388,8 @@ $("#updateDeliveryHub").on("click", function () {
     var data = {
       batchNo: globCurrentEditingBatchNo,
       quantity: parseInt($("#quantity").val().trim()),
-      temperature: $("#processingTemperature").val().trim(),
-      rostingDuration: parseInt($("#rostingDuration").val().trim()),
+      temperature: 10,
+      rostingDuration: 10,
       internalBatchNo: $("#internalBatchNo").val().trim(),
       packageDateTime: new Date(tmpDate).getTime() / 1000,
       deliveryHubName: $("#deliveryHubName").val().trim(),
@@ -369,27 +402,35 @@ $("#updateDeliveryHub").on("click", function () {
 
 function updateDeliveryHub(contractRef, data) {
   //contractRef.methods.updateUser("Swapnali","9578774787","MANUFACTURER",true,"0x74657374")
-  contractRef.methods
-    .updateDeliveryHubData(
-      data.batchNo,
-      data.quantity,
-      data.temperature,
-      data.rostingDuration,
-      data.internalBatchNo,
-      data.packageDateTime,
-      data.deliveryHubName,
-      data.deliveryHubAddress
-    )
-    .send({ from: globCoinbase, to: contractRef.address })
-    .on("transactionHash", function (hash) {
-      $.magnificPopup.instance.close();
-      handleTransactionResponse(hash);
+  var updateDeliveryHubData = contractRef.methods.updateDeliveryHubData(
+    data.batchNo,
+    data.quantity,
+    "10",
+    "10",
+    data.internalBatchNo,
+    data.packageDateTime,
+    data.deliveryHubName,
+    data.deliveryHubAddress
+  );
+  updateDeliveryHubData
+    .estimateGas({ from: globCoinbase })
+    .then(function (gasAmount) {
+      updateDeliveryHubData
+        .send({ from: globCoinbase, gas: gasAmount })
+        .on("transactionHash", function (hash) {
+          $.magnificPopup.instance.close();
+          handleTransactionResponse(hash);
+        })
+        .on("receipt", function (receipt) {
+          receiptMessage = "Processing Updated Succussfully";
+          handleTransactionReceipt(receipt, receiptMessage);
+        })
+        .on("error", function (error) {
+          handleGenericError(error.message);
+          return;
+        });
     })
-    .on("receipt", function (receipt) {
-      receiptMessage = "Processing Updated Succussfully";
-      handleTransactionReceipt(receipt, receiptMessage);
-    })
-    .on("error", function (error) {
+    .catch(function (error) {
       handleGenericError(error.message);
       return;
     });
