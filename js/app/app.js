@@ -1,13 +1,13 @@
 var globIcoAddress = {
   /*'old-ProductMain': "0xfA171Cda184d815D20a318fCe9920AafdC04934e",
 		'old-ProductUser': "0x26d723acFe39f93A9702592dD9371851f81cF59F",*/
-  ProductMain: "0xCC7afaF036E8EDa49C768024111327ca3c9bF237".toLocaleLowerCase(),
-  ProductUser: "0xe26814d2Bd798aa3db4BdbfAEeb75782162EC863".toLocaleLowerCase(),
-  Storage: "0x6F16983b772DA7CCe552bb6703FB919D1F6533C2".toLocaleLowerCase(),
+  ProductMain: "0xAeDBE9314bd6469072123c8Bc3Ec774b4341A3eE".toLocaleLowerCase(),
+  ProductUser: "0x575906BB03ff7EC2f1a04FB1749c73C10Fe38BF9".toLocaleLowerCase(),
+  Storage: "0x821F1dEFb306E6Ea7C5396029Fcc028363684f61".toLocaleLowerCase(),
 };
 
 var globAdminAddress =
-  "0xcdD7C591353bCe68e8A83DD32beCd1bB5EC825d5";
+  "0xfF0fA9d5ACeb47A2c3B0B9396e39bE9c2435e227";
 var globMainContract = false;
 var globUserContract = false;
 var globCoinbase = false;
@@ -34,10 +34,18 @@ window.addEventListener("load", function () {
     var currentPanel = tmpStack.pop();
     console.log(currentPanel, address, globAdminAddress, "-------------------------------");
     if (currentPanel == "admin.php") {
-      if (address != globAdminAddress) {
+      if (address !== globAdminAddress) {
+       
         window.location = "index.php";
       }
     }
+    // if (currentPanel == "index.php") {
+    //   if (address == globAdminAddress) {
+    //     window.location = "admin.php";
+    //   }else{
+    //     window.location = "index.php";
+    //   }
+    // }
   });
 
   initContract();
@@ -345,7 +353,7 @@ function buildUserTable(globUserData) {
 }
 
 function handleTransactionResponse(txHash, finalMessage) {
-  var txLink = "https://rinkeby.etherscan.io/tx/" + txHash;
+  var txLink = "https://app.tryethernal.com/transaction/" + txHash;
   var txLinkHref =
     "<a target='_blank' href='" +
     txLink +
@@ -433,8 +441,8 @@ function openEditUser(ref) {
   });
 }
 
-//ipfs = window.IpfsApi('localhost', 5001);
-ipfs = window.IpfsApi("ipfs.infura.io", "5001", { protocol: "https" });
+ipfs = window.IpfsApi('localhost', 5001);
+//ipfs = window.IpfsApi("ipfs.infura.io", "5001", { protocol: "https" });
 
 function handleFileUpload(event) {
   const file = event.target.files[0];
@@ -459,7 +467,7 @@ function saveToIpfs(reader) {
   /*Upload Buffer to IPFS*/
   ipfs.files.add(buffer, (err, result) => {
     if (err) {
-      console.error(err);
+      console.log(err);
       return;
     }
 

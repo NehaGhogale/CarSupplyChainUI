@@ -1,5 +1,21 @@
 var globCurrentEditingBatchNo = false;
 var globCurrentUser = false;
+var globCurrentForm = false;
+var qualityInspectorPreData = {
+  exporterName: "",
+  importerName: ""
+};
+
+var exporterPreData = {
+  shipName:'',
+  quantity:''
+};
+
+var importerPreData = {
+  shipName:'',
+  quantity:'',
+  shipCode:''
+};
 
 var userForm,
   qualityInspectorForm,
@@ -165,9 +181,47 @@ function updateUser(contractRef, data) {
 
 /* --------------- Activity Section -----------------------*/
 
-function editActivity(batchNo) {
+function editActivity(batchNo, currentForm) {
   startLoader();
   globCurrentEditingBatchNo = batchNo;
+  globCurrentForm = currentForm;
+  if(globCurrentForm === "QUALITY_INSPECTOR"){
+    getCultivationData(globMainContract,batchNo,function(result)
+		{
+      qualityInspectorPreData.exporterName = result.exporterName;
+      qualityInspectorPreData.importerName = result.importerName;
+      document.getElementById("qualityInspectorPreDataExporterName").value = qualityInspectorPreData.exporterName;
+      document.getElementById("qualityInspectorPreDataImporterName").value = qualityInspectorPreData.importerName;
+      document.getElementById("qualityInspectorPreDataExporterName").disabled = true;
+      document.getElementById("qualityInspectorPreDataImporterName").disabled = true;
+		});
+  }
+  if(globCurrentForm === "EXPORTER"){
+    getManufacturerData(globMainContract, batchNo, function (result) {
+      console.log(result, "===================");
+      exporterPreData.shipName = result.cropVariety;
+      exporterPreData.quantity = result.temperatureUsed;
+      document.getElementById("shipName").value = exporterPreData.shipName;
+      document.getElementById("quantity").value = exporterPreData.quantity;
+      document.getElementById("shipName").disabled = true;
+      document.getElementById("quantity").disabled = true;
+    });
+  }
+  if(globCurrentForm === "IMPORTER"){
+    getExporterData(globMainContract, batchNo, function (result) {
+      console.log(result, "===================");
+      importerPreData.shipName = result.shipName;
+      importerPreData.quantity = result.quantity;
+      importerPreData.shipCode = result.shipNo;
+      document.getElementById("shipNo").value = importerPreData.shipCode;
+      document.getElementById("shipName").value = importerPreData.shipName;
+      document.getElementById("quantity").value = importerPreData.quantity;
+      document.getElementById("shipName").disabled = true;
+      document.getElementById("quantity").disabled = true;
+      document.getElementById("shipNo").disabled = true;
+    });
+  }
+  console.log(globCurrentForm);
 }
 
 /* --------------- Quality Inspector Section -----------------------*/
@@ -177,12 +231,16 @@ $("#updateQualityInspector").on("click", function () {
     var data = {
       batchNo: globCurrentEditingBatchNo,
       productFamily: $("#productFamily").val().trim(),
-      typeOfSeed: $("#typeOfSeed").val().trim(),
+      typeOfSeed: $("input[type='radio'][name='typeOfSeed']:checked").val().trim(),
       fertilizerUsed: $("#fertilizerUsed").val().trim(),
     };
 
     updateQualityInspector(globMainContract, data);
   }
+});
+
+$("#qualityInspectorForm").on("load", function () {
+  console.log("hiiiiii2")
 });
 
 function updateQualityInspector(contractRef, data) {
@@ -251,7 +309,7 @@ function updateHarvest(contractRef, data) {
           handleTransactionResponse(hash);
         })
         .on("receipt", function (receipt) {
-          receiptMessage = "Harvest Updated Succussfully";
+          receiptMessage = "Product Manufacturing Updated Succussfully";
           handleTransactionReceipt(receipt, receiptMessage);
         })
         .on("error", function (error) {
@@ -280,7 +338,7 @@ $("#updateExport").on("click", function () {
       shipNo: $("#shipNo").val().trim(),
       estimateDateTime: new Date(tmpDate).getTime() / 1000,
       plantNo: 0,
-      exporterId: parseInt($("#exporterId").val().trim()),
+      exporterId: 1,//parseInt($("#exporterId").val().trim()),
     };
 
     updateExport(globMainContract, data);
@@ -422,7 +480,7 @@ function updateDeliveryHub(contractRef, data) {
           handleTransactionResponse(hash);
         })
         .on("receipt", function (receipt) {
-          receiptMessage = "Processing Updated Succussfully";
+          receiptMessage = "Delivery Hub Updated Succussfully";
           handleTransactionReceipt(receipt, receiptMessage);
         })
         .on("error", function (error) {
@@ -498,7 +556,7 @@ function buildCultivationTable(finalEvents) {
                           <span class="label label-inverse font-weight-100">
                           <a class="popup-with-form" href="#qualityInspectorForm" onclick="editActivity('` +
           batchNo +
-          `')">
+          `','QUALITY_INSPECTOR')">
                             <span class="label label-inverse font-weight-100">Update</span>
                           </a>
                       </td>`;
@@ -531,7 +589,7 @@ function buildCultivationTable(finalEvents) {
                               <span class="label label-inverse font-weight-100">
                               <a class="popup-with-form" href="#manufacturerForm" onclick="editActivity('` +
           batchNo +
-          `')">
+          `','MANUFACTURER')">
                                 <span class="label label-inverse font-weight-100">Update</span>
                               </a>
                           </td>`;
@@ -566,7 +624,7 @@ function buildCultivationTable(finalEvents) {
                               <span class="label label-inverse font-weight-100">
                               <a class="popup-with-form" href="#exporterForm" onclick="editActivity('` +
           batchNo +
-          `')">
+          `','EXPORTER')">
                                 <span class="label label-inverse font-weight-100">Update</span>
                               </a>
                           </td>`;
@@ -601,7 +659,7 @@ function buildCultivationTable(finalEvents) {
                               <span class="label label-inverse font-weight-100">
                               <a class="popup-with-form" href="#importerForm" onclick="editActivity('` +
           batchNo +
-          `')">
+          `','IMPORTER')">
                                 <span class="label label-inverse font-weight-100">Update</span>
                               </a>
                           </td>`;
@@ -635,7 +693,7 @@ function buildCultivationTable(finalEvents) {
                               <span class="label label-inverse font-weight-100">
                               <a class="popup-with-form" href="#processingForm" onclick="editActivity('` +
           batchNo +
-          `')">
+          `','DELIVERY_HUB')">
                                 <span class="label label-inverse font-weight-150">Update</span>
                               </a>
                           </td>`;

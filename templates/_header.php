@@ -45,6 +45,9 @@
         .parsley-required , .red{
             color: red;
         }
+        .green{
+            color: green;
+        }
     </style>
 
     <!-- <script src="http://www.w3schools.com/lib/w3data.js"></script> -->

@@ -197,7 +197,7 @@
                             <form id="batchForm" onsubmit="return false;">
                             <fieldset style="border:0;">
                                 <div class="form-group">
-                                    <label class="control-label" for="farmerRegistrationNo">Supplyer Registration No <i class="red">*</i></label>
+                                    <label class="control-label" for="farmerRegistrationNo">Registration No <i class="red">*</i></label>
                                     <input type="text" class="form-control" id="farmerRegistrationNo" name="farmerRegistrationNo" placeholder="Manufacturer Registration No" data-parsley-required="true">
                                 </div> 
                                 <div class="form-group">
@@ -209,12 +209,12 @@
                                     <textarea class="form-control" id="farmerAddress" name="farmerAddress" placeholder="Manufacturer Address" data-parsley-required="true"></textarea>
                                 </div>
                                 <div class="form-group">
-                                    <label class="control-label" for="exporterName">Supplyer Name <i class="red">*</i></label>
+                                    <label class="control-label" for="exporterName">Raw Material Name <i class="red">*</i></label>
                                     <input type="text" class="form-control" id="exporterName" name="exporterName" placeholder="Exporter Name" data-parsley-required="true">
                                 </div> 
                                 <div class="form-group">
-                                    <label class="control-label" for="importerName">Importer Name <i class="red">*</i></label>
-                                    <input type="text" class="form-control" id="importerName" name="importerName" placeholder="Importer Name" data-parsley-required="true">
+                                    <label class="control-label" for="importerName">Raw Material Quantity <i class="red">*</i></label>
+                                    <input type="number" min="1" class="form-control" id="importerName" name="importerName" placeholder="Quantity" data-parsley-required="true">
                                 </div> 
                             </fieldset>
                             

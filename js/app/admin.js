@@ -151,7 +151,7 @@ function buildCultivationTable(finalEvents) {
     var batchNo = elem.batchNo;
     var transactionHash = elem.transactionHash;
     var tr = "";
-    var url = "https://rinkeby.etherscan.io/tx/" + transactionHash;
+    var url = "https://app.tryethernal.com/transaction/" + transactionHash;
     var qrCode =
       "https://chart.googleapis.com/chart?cht=qr&chld=H|1&chs=400x400&chl=" +
       url;
