@@ -4,6 +4,10 @@ var globIcoAddress = {
   ProductMain: "0xAeDBE9314bd6469072123c8Bc3Ec774b4341A3eE".toLocaleLowerCase(),
   ProductUser: "0x575906BB03ff7EC2f1a04FB1749c73C10Fe38BF9".toLocaleLowerCase(),
   Storage: "0x821F1dEFb306E6Ea7C5396029Fcc028363684f61".toLocaleLowerCase(),
+
+  // ProductMain: "0x15c704e6884E83d1A2d0ADE180c8C9A779bd93BC".toLocaleLowerCase(),
+  // ProductUser: "0x35aE17a72ab78432308917421739a3C288C35836".toLocaleLowerCase(),
+  // Storage: "0x4fc9Fb56785f753CaF14cc407Cf69Cd1EEC8C01D".toLocaleLowerCase(),
 };
 
 var globAdminAddress =
