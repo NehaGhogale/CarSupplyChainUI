@@ -506,6 +506,7 @@ function getCultivationEvents(contractRef) {
       var finalEvents = [];
       $.each(events, function (index, elem) {
         var tmpData = {};
+        tmpData.no = index + 1;
         tmpData.batchNo = elem.returnValues.batchNo;
         tmpData.transactionHash = elem.transactionHash;
         getBatchStatus(contractRef, tmpData.batchNo).then((result) => {
@@ -546,7 +547,7 @@ function buildCultivationTable(finalEvents) {
       tr =
         `<tr>
                     <td>` +
-        batchNo +
+        elem.no +
         `</td>
                   `;
 
@@ -570,7 +571,7 @@ function buildCultivationTable(finalEvents) {
               <td><span class="label label-danger font-weight-100">Not Available</span> </td>
               <td><span class="label label-danger font-weight-100">Not Available</span> </td>
               <td><a href="view-batch.php?batchNo=` +
-        batchNo +
+              batchNo  +
         `&txn=` +
         transactionHash +
         `" target="_blank" class="text-inverse p-r-10" data-toggle="tooltip" title="View"><i class="ti-eye"></i></a> </td>
@@ -579,7 +580,7 @@ function buildCultivationTable(finalEvents) {
       tr =
         `<tr>
                     <td>` +
-        batchNo +
+        elem.no +
         `</td>
                     <td><span class="label label-success font-weight-100">Completed</span></td>
                     `;
@@ -588,7 +589,7 @@ function buildCultivationTable(finalEvents) {
           `<td>
                               <span class="label label-inverse font-weight-100">
                               <a class="popup-with-form" href="#manufacturerForm" onclick="editActivity('` +
-          batchNo +
+                              batchNo +
           `','MANUFACTURER')">
                                 <span class="label label-inverse font-weight-100">Update</span>
                               </a>
@@ -603,7 +604,7 @@ function buildCultivationTable(finalEvents) {
                 <td><span class="label label-danger font-weight-100">Not Available</span> </td>
                 <td><span class="label label-danger font-weight-100">Not Available</span> </td>
                 <td><a href="view-batch.php?batchNo=` +
-        batchNo +
+                batchNo +
         `&txn=` +
         transactionHash +
         `" target="_blank" class="text-inverse p-r-10" data-toggle="tooltip" title="View"><i class="ti-eye"></i></a> </td>
@@ -612,7 +613,7 @@ function buildCultivationTable(finalEvents) {
       tr =
         `<tr>
                     <td>` +
-        batchNo +
+                    elem.no +
         `</td>
                     <td><span class="label label-success font-weight-100">Completed</span></td>
                     <td><span class="label label-success font-weight-100">Completed</span> </td>
@@ -623,7 +624,7 @@ function buildCultivationTable(finalEvents) {
           `<td>
                               <span class="label label-inverse font-weight-100">
                               <a class="popup-with-form" href="#exporterForm" onclick="editActivity('` +
-          batchNo +
+                              batchNo +
           `','EXPORTER')">
                                 <span class="label label-inverse font-weight-100">Update</span>
                               </a>
@@ -637,7 +638,7 @@ function buildCultivationTable(finalEvents) {
                     <td><span class="label label-danger font-weight-100">Not Available</span> </td>
                     <td><span class="label label-danger font-weight-100">Not Available</span> </td>
                     <td><a href="view-batch.php?batchNo=` +
-        batchNo +
+                    batchNo +
         `&txn=` +
         transactionHash +
         `" target="_blank" class="text-inverse p-r-10" data-toggle="tooltip" title="View"><i class="ti-eye"></i></a> </td>
@@ -646,7 +647,7 @@ function buildCultivationTable(finalEvents) {
       tr =
         `<tr>
                     <td>` +
-        batchNo +
+                    elem.no +
         `</td>
                     <td><span class="label label-success font-weight-100">Completed</span></td>
                     <td><span class="label label-success font-weight-100">Completed</span> </td>
@@ -658,7 +659,7 @@ function buildCultivationTable(finalEvents) {
           `<td>
                               <span class="label label-inverse font-weight-100">
                               <a class="popup-with-form" href="#importerForm" onclick="editActivity('` +
-          batchNo +
+                              batchNo +
           `','IMPORTER')">
                                 <span class="label label-inverse font-weight-100">Update</span>
                               </a>
@@ -670,7 +671,7 @@ function buildCultivationTable(finalEvents) {
       tr +=
         ` <td><span class="label label-danger font-weight-100">Not Available</span> </td>
                     <td><a href="view-batch.php?batchNo=` +
-        batchNo +
+                    batchNo +
         `&txn=` +
         transactionHash +
         `" target="_blank" class="text-inverse p-r-10" data-toggle="tooltip" title="View"><i class="ti-eye"></i></a> </td>
@@ -679,7 +680,7 @@ function buildCultivationTable(finalEvents) {
       tr =
         `<tr>
                     <td>` +
-        batchNo +
+                    elem.no +
         `</td>
                     <td><span class="label label-success font-weight-100">Completed</span></td>
                     <td><span class="label label-success font-weight-100">Completed</span> </td>
@@ -692,7 +693,7 @@ function buildCultivationTable(finalEvents) {
           `<td>
                               <span class="label label-inverse font-weight-100">
                               <a class="popup-with-form" href="#processingForm" onclick="editActivity('` +
-          batchNo +
+                              batchNo +
           `','DELIVERY_HUB')">
                                 <span class="label label-inverse font-weight-150">Update</span>
                               </a>
@@ -703,7 +704,7 @@ function buildCultivationTable(finalEvents) {
       tr +=
         `    
                     <td><a href="view-batch.php?batchNo=` +
-        batchNo +
+                    batchNo +
         `&txn=` +
         transactionHash +
         `" target="_blank" class="text-inverse p-r-10" data-toggle="tooltip" title="View"><i class="ti-eye"></i></a> </td>
@@ -712,7 +713,7 @@ function buildCultivationTable(finalEvents) {
       tr =
         `<tr>
                     <td>` +
-        batchNo +
+                    elem.no +
         `</td>
                     <td><span class="label label-success font-weight-100">Completed</span></td>
                     <td><span class="label label-success font-weight-100">Completed</span> </td>

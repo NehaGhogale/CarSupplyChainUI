@@ -115,6 +115,7 @@ function getCultivationEvents(contractRef) {
       var finalEvents = [];
       $.each(events, function (index, elem) {
         var tmpData = {};
+        tmpData.no = index + 1;
         tmpData.batchNo = elem.returnValues.batchNo;
         tmpData.transactionHash = elem.transactionHash;
         getBatchStatus(contractRef, tmpData.batchNo).then((result) => {
@@ -158,7 +159,7 @@ function buildCultivationTable(finalEvents) {
 
     var commBatchTd =
       `<td>` +
-      batchNo +
+      elem.no +
       ` <a href="` +
       url +
       `" class="text-danger" target="_blank"><i class="fa fa-external-link"></i></a></td>`;
